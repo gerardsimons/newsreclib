@@ -299,11 +299,17 @@ class MINDDataFrame(Dataset):
 
                 # compute sentiment classes
                 log.info("Computing sentiments.")
-                news["sentiment_preds"] = news["title"].progress_apply(
-                    lambda text: self.sentiment_annotator(text)
-                )
-                news["sentiment_class"], news["sentiment_score"] = zip(*news["sentiment_preds"])
-                news.drop(columns=["sentiment_preds"], inplace=True)
+
+                # news["sentiment_preds"] = news["title"].progress_apply(
+                #     lambda text: self.sentiment_annotator(text)
+                # )
+
+                # Skipping sentiment annotation
+                # news["sentiment_class"], news["sentiment_score"] = zip(*news["sentiment_preds"])
+                # news.drop(columns=["sentiment_preds"], inplace=True)
+
+                news["sentiment_class"] = "neutral"
+
                 log.info("Sentiments computation completed.")
 
             if self.data_split == "train":

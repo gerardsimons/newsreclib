@@ -36,6 +36,8 @@ trainer:
   max_epochs: 20
 
 logger:
+#  tensorboard:
+#    name: "nrms_mindsmall_pretrainedemb_celoss_bertsent_s42"
   wandb:
     name: "nrms_mindsmall_pretrainedemb_celoss_bertsent_s42"
     tags: ${tags}
